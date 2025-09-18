@@ -1,1 +1,30 @@
 .vscode
+
+# Data files
+data/
+*.csv
+*.zip
+*.tar.gz
+
+# Kaggle API credentials
+.kaggle/kaggle.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# OS files
+.DS_Store
+Thumbs.db
+
+#ENV files
+.env

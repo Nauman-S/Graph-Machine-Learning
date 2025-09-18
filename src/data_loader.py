@@ -24,7 +24,7 @@ class EllipticDataLoader:
         if data_dir is None:
             # Get the project root directory
             project_root = Path(__file__).parent.parent
-            data_dir = project_root / "data" / "elliptic"
+            data_dir = project_root / "data" / "elliptic_bitcoin_dataset"
         
         self.data_dir = Path(data_dir)
         
@@ -83,9 +83,6 @@ class EllipticDataLoader:
                 "Please download the dataset from Kaggle first."
             )
         
-        print("Loading Elliptic dataset...")
-        
-        # Load features
         features_df = pd.read_csv(self.data_dir / self.features_file, header=None)
         print(f"Loaded features: {features_df.shape}")
         
@@ -120,26 +117,3 @@ class EllipticDataLoader:
         print(merged_df['class'].value_counts())
         
         return merged_df, edges_df
-
-
-# Example usage
-if __name__ == "__main__":
-    # Create data loader
-    loader = EllipticDataLoader()
-    
-    # List files in data directory
-    loader.list_data_files()
-    
-    # Try to load the data
-    try:
-        features_df, classes_df, edges_df = loader.load_data()
-        print("\nDataset loaded successfully!")
-        
-        # Load processed data
-        merged_df, edges_df = loader.load_processed_data()
-        
-    except FileNotFoundError as e:
-        print(f"\nError: {e}")
-        print("\nTo use this dataset:")
-        print("1. Download the Elliptic dataset from Kaggle")
-        print("2. Extract the CSV files to: data/elliptic/")
